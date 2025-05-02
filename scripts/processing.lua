@@ -387,7 +387,7 @@ function process_functions.process_animation_1(data, entity_bounding_box)
         end
 
         if data.stripes then
-            if data.filenames or data.lines_per_file then
+            if data.filenames then
                 error(not_implemented_error_message)
             end
 
