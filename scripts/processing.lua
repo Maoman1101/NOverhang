@@ -77,7 +77,7 @@ local function process_sprite_parameters(data, entity_bounding_box, index_x, ind
         data.shift = intersection_tiles.center
     else 
         local intersection_tiles = overhangs(data, entity_bounding_box)
-        local alpha = settings.startup["NOverhang_toggle_opacity"].value * 0.01
+        local alpha = settings.startup["NOverhang_opacity_strength"].value * 0.01
 
         -- If it overhangs at all (partial overlap or fully outside), tint whole sprite 50% and return.
         if intersection_tiles ~= false then
