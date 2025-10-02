@@ -79,21 +79,17 @@ local function process_sprite_parameters(data, entity_bounding_box, index_x, ind
         local intersection_tiles = overhangs(data, entity_bounding_box)
         local alpha = settings.startup["NOverhang_opacity_strength"].value * 0.01
 
-        -- If it overhangs at all (partial overlap or fully outside), tint whole sprite 50% and return.
         if intersection_tiles ~= false then
             local t = data.tint
             if t then
                 if t[1] then
-                    -- array form: {r, g, b, a}
                     local r, g, b, a = t[1], t[2], t[3], t[4] or 1
                     data.tint = { r = r, g = g, b = b, a = a * alpha }
                 else
-                    -- map form: {r=, g=, b=, a=}
                     t.a = (t.a or 1) * alpha
                     data.tint = t
                 end
             else
-                -- no existing tint
                 data.tint = { r = 1, g = 1, b = 1, a = alpha }
             end
             return
